@@ -21,7 +21,7 @@ def login():
     password = request.form['password']
 
     # Validar los datos de inicio de sesión
-    if username == 'admin' and password == 'admin':
+    if username == 'a' and password == 'a':
         # Inicio de sesión exitoso, redireccionar a una página de inicio
         return redirect(url_for('contacts.admin'))
     else:
@@ -36,16 +36,17 @@ def add_contact():
         fullname = request.form['fullname']
         phone = request.form['phone']
         email = request.form['email']
+        cc = request.form['cc']
         try:
             cur = mysql.connection.cursor()
             cur.execute(
-                "INSERT INTO contacts (fullname, phone, email) VALUES (%s,%s,%s)", (fullname, phone, email))
+                "INSERT INTO contacts (fullname, phone, email, cc) VALUES (%s,%s,%s,%s)", (fullname, phone, email, cc))
             mysql.connection.commit()
             flash('Agregado correctamente')
-            return redirect(url_for('contacts.Index'))
+            return redirect(url_for('contacts.admin'))
         except Exception as e:
             flash(e.args[1])
-            return redirect(url_for('contacts.Index'))
+            return redirect(url_for('contacts.admin'))
 
 
 @contacts.route('/edit/<id>', methods=['POST', 'GET'])
@@ -64,17 +65,19 @@ def update_contact(id):
         fullname = request.form['fullname']
         phone = request.form['phone']
         email = request.form['email']
+        cc = request.form['cc']
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE contacts
             SET fullname = %s,
                 email = %s,
-                phone = %s
+                phone = %s,
+                cc = %s
             WHERE id = %s
-        """, (fullname, email, phone, id))
+        """, (fullname, email, phone, cc, id))
         flash('Actualizado correctamente')
         mysql.connection.commit()
-        return redirect(url_for('contacts.Index'))
+        return redirect(url_for('contacts.admin'))
 
 
 @contacts.route('/delete/<string:id>', methods=['POST', 'GET'])
@@ -83,4 +86,4 @@ def delete_contact(id):
     cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
     mysql.connection.commit()
     flash('Registro eliminado')
-    return redirect(url_for('contacts.Index'))
+    return redirect(url_for('contacts.admin'))

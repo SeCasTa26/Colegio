@@ -26,6 +26,9 @@
           <div class="form-group">
             <input type="text" class="form-control" name="phone" placeholder="Phone">
           </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="cc" placeholder="Cedula">
+          </div>
           <button class="btn btn-primary btn-block">
             Save 
           </button>
@@ -40,6 +43,7 @@
             <td>Nombre</td>
             <td>Correo</td>
             <td>Teléfono</td>
+            <td>Cedula</td>
             <td>Operaciones</td>
           </tr>
         </thead>
@@ -50,6 +54,7 @@
             <td>{{contact.fullname}}</td>
             <td>{{contact.email}}</td>
             <td>{{contact.phone}}</td>
+            <td>{{contact.CC}}</td>
             <td>
               <a href="/edit/{{contact.id}}" class="btn btn-secondary">Editar</a>
               <a href="/delete/{{contact.id}}" class="btn btn-danger btn-delete">Eliminar</a>
