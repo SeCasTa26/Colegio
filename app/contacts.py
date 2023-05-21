@@ -26,8 +26,8 @@ def login():
         return redirect(url_for('contacts.admin'))
     else:
         # Inicio de sesión fallido, redireccionar al formulario de inicio de sesión
-        
-        return redirect(url_for('contacts.index'))
+
+        return render_template('login.html', error_message='Credenciales incorrectas')
         
     
 @contacts.route('/add_contact', methods=['POST'])

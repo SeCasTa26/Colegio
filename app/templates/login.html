@@ -8,7 +8,9 @@
 </head>
 <body>
 
-    
+  {% if error_message %}
+  <p style="color: red;">{{ error_message }}</p>
+  {% endif %}
   <form method="POST" action="/login">
     <label for="username">Usuario:</label>
     <input type="text" id="username" name="username"><br><br>
