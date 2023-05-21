@@ -37,10 +37,10 @@
         <thead>
           <tr>
             <td>ID</td>
-            <td>fullname</td>
-            <td>email</td>
-            <td>phone</td>
-            <td>Operations</td>
+            <td>Nombre</td>
+            <td>Correo</td>
+            <td>Teléfono</td>
+            <td>Operaciones</td>
           </tr>
         </thead>
         <tbody>
@@ -51,8 +51,8 @@
             <td>{{contact.email}}</td>
             <td>{{contact.phone}}</td>
             <td>
-              <a href="/edit/{{contact.id}}" class="btn btn-secondary">edit</a>
-              <a href="/delete/{{contact.id}}" class="btn btn-danger btn-delete">delete</a>
+              <a href="/edit/{{contact.id}}" class="btn btn-secondary">Editar</a>
+              <a href="/delete/{{contact.id}}" class="btn btn-danger btn-delete">Eliminar</a>
             </td>
           </tr>
           {% endfor %}

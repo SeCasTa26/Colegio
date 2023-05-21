@@ -4,14 +4,32 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 contacts = Blueprint('contacts', __name__, template_folder='app/templates')
 
 @contacts.route('/')
-def Index():
+def index():
+    return render_template('login.html')
+
+@contacts.route('/admin')
+def admin():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM contacts')
     data = cur.fetchall()
     cur.close()
     return render_template('index.html', contacts=data)
 
+@contacts.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
 
+    # Validar los datos de inicio de sesión
+    if username == 'admin' and password == 'admin':
+        # Inicio de sesión exitoso, redireccionar a una página de inicio
+        return redirect(url_for('contacts.admin'))
+    else:
+        # Inicio de sesión fallido, redireccionar al formulario de inicio de sesión
+        
+        return redirect(url_for('contacts.index'))
+        
+    
 @contacts.route('/add_contact', methods=['POST'])
 def add_contact():
     if request.method == 'POST':
