@@ -53,11 +53,11 @@ def login():
     password = request.form['password']
 
     # Validar los datos de inicio de sesión
-    if username == 'a' and password == 'a':
+    if username == 'juantutriadmin123' and password == 'juantutriadmin123':
         # Inicio de sesión exitoso, redireccionar a una página de inicio
         return redirect(url_for('contacts.admin_alumnos'))
     else:
-        if username == 'b' and password == 'b':
+        if username == 'juantutrialumno123' and password == 'juantutrialumno123':
             # Inicio de sesión exitoso, redireccionar a una página de inicio
             return redirect(url_for('contacts.alumno_cursos'))
         else:        
