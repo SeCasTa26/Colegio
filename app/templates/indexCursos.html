@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-5">
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body">
+        <form action="{{url_for('contacts.add_cursos')}}" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" name="codigo" placeholder="Codigo">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="materia" placeholder="Materia">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="creditos" placeholder="Creditos">
+          </div>
+          <button class="btn btn-primary btn-block">
+            Guardar 
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Codigo</td>
+            <td>Materia</td>
+            <td>Creditos</td>
+            <td>Operaciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for curso in cursos %}
+          <tr>
+            <td>{{curso.id}}</td>
+            <td>{{curso.codigo}}</td>
+            <td>{{curso.materia}}</td>
+            <td>{{curso.creditos}}</td>
+            <td>
+              <a href="/edit_cursos/{{curso.id}}" class="btn btn-secondary">Editar</a>
+              <a href="/delete_cursos/{{curso.id}}" class="btn btn-danger btn-delete">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

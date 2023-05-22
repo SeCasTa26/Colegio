@@ -1,9 +1,9 @@
 import os
 
-
-from app import app
 from dotenv import load_dotenv
 from flask_mysqldb import MySQL
+
+from app import app
 
 load_dotenv()  # take environment variables from .env.
 

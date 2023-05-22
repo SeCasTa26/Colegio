@@ -30,7 +30,7 @@
             <input type="text" class="form-control" name="cc" placeholder="Cedula">
           </div>
           <button class="btn btn-primary btn-block">
-            Save 
+            Guardar 
           </button>
         </form>
       </div>
@@ -56,8 +56,8 @@
             <td>{{contact.phone}}</td>
             <td>{{contact.CC}}</td>
             <td>
-              <a href="/edit/{{contact.id}}" class="btn btn-secondary">Editar</a>
-              <a href="/delete/{{contact.id}}" class="btn btn-danger btn-delete">Eliminar</a>
+              <a href="/edit_alumnos/{{contact.id}}" class="btn btn-secondary">Editar</a>
+              <a href="/delete_alumnos/{{contact.id}}" class="btn btn-danger btn-delete">Eliminar</a>
             </td>
           </tr>
           {% endfor %}

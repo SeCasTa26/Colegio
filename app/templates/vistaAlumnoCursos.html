@@ -1,0 +1,28 @@
+{% extends "layoutAlumno.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white"> 
+        <thead>
+          <tr>
+            <td>Codigo</td>
+            <td>Materia</td>
+            <td>Creditos</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for curso in cursos %}
+          <tr>
+            <td>{{curso.codigo}}</td>
+            <td>{{curso.materia}}</td>
+            <td>{{curso.creditos}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

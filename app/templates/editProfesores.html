@@ -1,0 +1,27 @@
+{% extends "layout.html" %}CC
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/update_profesores/{{profesor.id}}" method="POST">
+          <div class="form-group">
+            <input type="text" name="nombre" value="{{profesor.nombre}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="salario" value="{{profesor.salario}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="cc" value="{{profesor.cc}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

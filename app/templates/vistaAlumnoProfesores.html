@@ -1,0 +1,26 @@
+{% extends "layoutAlumno.html" %}
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>Nombre</td>
+            <td>Cedula</td>
+          </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+            <tr>
+              <td>{{profesor.nombre}}</td>
+              <td>{{profesor.cc}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
